@@ -3,153 +3,124 @@ image_sets:
     path: android/app/src/main/res/
     images:
       - size: 48x48
+        path: mipmap-mdpi/
         filename: ic_launcher.png
-        filepath: mipmap-mdpi/
       - size: 72x72
+        path: mipmap-hdpi/
         filename: ic_launcher.png
-        filepath: mipmap-hdpi/
       - size: 96x96
+        path: mipmap-xhdpi/
         filename: ic_launcher.png
-        filepath: mipmap-xhdpi/
       - size: 144x144
+        path: mipmap-xxhdpi/
         filename: ic_launcher.png
-        filepath: mipmap-xxhdpi/
       - size: 192x192
+        path: mipmap-xxxhdpi/
         filename: ic_launcher.png
-        filepath: mipmap-xxxhdpi/
   - name: ios
     path: ios/Runner/Assets.xcassets/AppIcon.appiconset/
     images:
       - size: 20x20
-        idiom: iphone
-        filename: Icon-App-20x20@2x.png
         scale: 2x
+        filename: Icon-App-20x20@2x.png
       - size: 20x20
-        idiom: iphone
+        scale: 3x
         filename: Icon-App-20x20@3x.png
-        scale: 3x
       - size: 29x29
-        idiom: iphone
-        filename: Icon-App-29x29@1x.png
         scale: 1x
+        filename: Icon-App-29x29@1x.png
       - size: 29x29
-        idiom: iphone
-        filename: Icon-App-29x29@2x.png
         scale: 2x
+        filename: Icon-App-29x29@2x.png
       - size: 29x29
-        idiom: iphone
+        scale: 3x
         filename: Icon-App-29x29@3x.png
-        scale: 3x
       - size: 40x40
-        idiom: iphone
-        filename: Icon-App-40x40@2x.png
         scale: 2x
+        filename: Icon-App-40x40@2x.png
       - size: 40x40
-        idiom: iphone
+        scale: 3x
         filename: Icon-App-40x40@3x.png
-        scale: 3x
       - size: 60x60
-        idiom: iphone
+        scale: 2x
         filename: Icon-App-60x60@2x.png
-        scale: 2x
       - size: 60x60
-        idiom: iphone
-        filename: Icon-App-60x60@3x.png
         scale: 3x
+        filename: Icon-App-60x60@3x.png
       - size: 20x20
-        idiom: ipad
+        scale: 1x
         filename: Icon-App-20x20@1x.png
-        scale: 1x
       - size: 20x20
-        idiom: ipad
+        scale: 2x
         filename: Icon-App-20x20@2x.png
-        scale: 2x
       - size: 29x29
-        idiom: ipad
+        scale: 1x
         filename: Icon-App-29x29@1x.png
-        scale: 1x
       - size: 29x29
-        idiom: ipad
+        scale: 2x
         filename: Icon-App-29x29@2x.png
-        scale: 2x
       - size: 40x40
-        idiom: ipad
+        scale: 1x
         filename: Icon-App-40x40@1x.png
-        scale: 1x
       - size: 40x40
-        idiom: ipad
+        scale: 2x
         filename: Icon-App-40x40@2x.png
-        scale: 2x
       - size: 76x76
-        idiom: ipad
+        scale: 1x
         filename: Icon-App-76x76@1x.png
-        scale: 1x
       - size: 76x76
-        idiom: ipad
+        scale: 2x
         filename: Icon-App-76x76@2x.png
-        scale: 2x
       - size: 83.5x83.5
-        idiom: ipad
-        filename: Icon-App-83.5x83.5@2x.png
         scale: 2x
+        filename: Icon-App-83.5x83.5@2x.png
       - size: 1024x1024
-        idiom: ios-marketing
-        filename: Icon-App-1024x1024@1x.png
         scale: 1x
+        filename: Icon-App-1024x1024@1x.png
   - name: macos
     path: macos/Runner/Assets.xcassets/AppIcon.appiconset/
     images:
       - size: 16x16
-        idiom: mac
+        scale: 1x
         filename: app_icon_16.png
-        scale: 1x
       - size: 16x16
-        idiom: mac
-        filename: app_icon_32.png
         scale: 2x
-      - size: 32x32
-        idiom: mac
         filename: app_icon_32.png
-        scale: 1x
       - size: 32x32
-        idiom: mac
+        scale: 1x
+        filename: app_icon_32.png
+      - size: 32x32
+        scale: 2x
         filename: app_icon_64.png
-        scale: 2x
       - size: 128x128
-        idiom: mac
+        scale: 1x
         filename: app_icon_128.png
-        scale: 1x
       - size: 128x128
-        idiom: mac
-        filename: app_icon_256.png
         scale: 2x
-      - size: 256x256
-        idiom: mac
         filename: app_icon_256.png
-        scale: 1x
       - size: 256x256
-        idiom: mac
-        filename: app_icon_512.png
-        scale: 2x
-      - size: 512x512
-        idiom: mac
-        filename: app_icon_512.png
         scale: 1x
+        filename: app_icon_256.png
+      - size: 256x256
+        scale: 2x
+        filename: app_icon_512.png
       - size: 512x512
-        idiom: mac
+        scale: 1x
+        filename: app_icon_512.png
+      - size: 512x512
+        scale: 2x
         filename: app_icon_1024.png
-        scale: 2x
   - name: web
     path: web/
     images:
       - size: 16x16
         filename: favicon.png
       - size: 192x192
+        path: icons/
         filename: Icon-192.png
-        filepath: icons/
       - size: 512x512
-        filename: Icon-192.png
-        filepath: icons/
+        path: icons/
+        filename: Icon-512.png
   - name: windows
     path: windows/runner/resources/
     images:

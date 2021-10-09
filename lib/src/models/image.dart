@@ -1,8 +1,8 @@
 class Image {
   String size;
-  String filename;
-  String filepath;
   int scale;
+  String path;
+  String filename;
 
   double get _width => double.parse(size.split('x')[0]);
   double get _height => double.parse(size.split('x')[1]);
@@ -12,26 +12,26 @@ class Image {
 
   Image({
     required this.size,
-    required this.filename,
-    required this.filepath,
     required this.scale,
+    required this.path,
+    required this.filename,
   });
 
   factory Image.fromJson(Map<String, dynamic> json) {
     return Image(
       size: json['size'],
-      filename: json['filename'],
-      filepath: json['filepath'] ?? '',
       scale: int.parse((json['scale'] ?? '1x').replaceFirst('x', '')),
+      path: json['path'] ?? '',
+      filename: json['filename'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'size': size,
-      'filename': filename,
-      'filepath': filepath,
       'scale': '${scale}x',
+      'path': path,
+      'filename': filename,
     };
   }
 }

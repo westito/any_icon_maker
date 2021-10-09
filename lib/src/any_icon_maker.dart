@@ -1,40 +1,31 @@
-import 'dart:io';
-import 'package:image/image.dart' as img;
-
-import 'image_set.dart';
-import 'image.dart';
+import 'models/models.dart';
+// import 'image_processor_adapter_imglib.dart';
+import 'image_processor_adapter_magick.dart';
+// import 'image_processor_adapter.dart';
+import 'image_processor.dart';
 
 class AnyIconMaker {
+  ImageProcessor imageProcessor = ImageProcessor(
+    // ImageProcessorAdapterImglib(),
+    ImageProcessorAdapterMagick(),
+  );
+
   Future<void> make(
     String path,
     String outputPath,
     List<ImageSet> imageSetList,
   ) async {
-    final originImage = img.decodePng(File(path).readAsBytesSync())!;
-
     for (ImageSet imageSet in imageSetList) {
+      print('[any_icon_maker] imageSet: ${imageSet.name}');
       for (Image image in imageSet.images) {
-        final resizedImage = img.copyResize(
-          originImage,
-          width: image.width.toInt(),
-          height: image.height.toInt(),
-          interpolation: img.Interpolation.average,
-        );
-
-        File outputFile = File(
-          '$outputPath/${imageSet.path}${image.filepath}${image.filename}',
-        );
-        if (!outputFile.parent.existsSync()) {
-          outputFile.parent.createSync(recursive: true);
+        String outPath = '${imageSet.path}${image.path}${image.filename}';
+        bool isSaved = imageProcessor
+            .load(path)
+            .resize(image.width.toInt(), image.height.toInt())
+            .save(outPath);
+        if (isSaved) {
+          print('[any_icon_maker] Created $outPath');
         }
-        List<int> resizedImageData;
-        if (image.filename.contains('.ico')) {
-          resizedImageData = img.encodeIco(resizedImage);
-        } else {
-          resizedImageData = img.encodePng(resizedImage);
-        }
-        outputFile.writeAsBytesSync(resizedImageData);
-        print(outputFile);
       }
     }
   }
