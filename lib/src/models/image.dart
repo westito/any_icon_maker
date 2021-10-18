@@ -12,8 +12,8 @@ class Image {
 
   Image({
     required this.size,
-    required this.scale,
-    required this.path,
+    this.scale = 1,
+    this.path = '',
     required this.filename,
   });
 

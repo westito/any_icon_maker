@@ -1,7 +1,6 @@
 import 'models/models.dart';
 // import 'image_processor_adapter_imglib.dart';
 import 'image_processor_adapter_magick.dart';
-// import 'image_processor_adapter.dart';
 import 'image_processor.dart';
 
 class AnyIconMaker {
@@ -11,20 +10,25 @@ class AnyIconMaker {
   );
 
   Future<void> make(
-    String path,
+    String iconPath,
     String outputPath,
     List<ImageSet> imageSetList,
   ) async {
     for (ImageSet imageSet in imageSetList) {
-      print('[any_icon_maker] imageSet: ${imageSet.name}');
       for (Image image in imageSet.images) {
-        String outPath = '${imageSet.path}${image.path}${image.filename}';
+        String imagePath = [
+          outputPath,
+          imageSet.path,
+          image.path,
+          image.filename,
+        ].join('');
+
         bool isSaved = imageProcessor
-            .load(path)
+            .load(iconPath)
             .resize(image.width.toInt(), image.height.toInt())
-            .save(outPath);
+            .save(imagePath);
         if (isSaved) {
-          print('[any_icon_maker] Created $outPath');
+          print('Maked: $imagePath');
         }
       }
     }
