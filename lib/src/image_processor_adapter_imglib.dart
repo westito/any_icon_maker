@@ -6,7 +6,7 @@ import 'image_processor_adapter.dart';
 
 class ImageProcessorAdapterImglib extends ImageProcessorAdapter {
   @override
-  bool save(String outPath) {
+  void save(String outPath) {
     imglib.Image originImage =
         imglib.decodePng(originImageFile!.readAsBytesSync())!;
 
@@ -28,6 +28,5 @@ class ImageProcessorAdapterImglib extends ImageProcessorAdapter {
       resizedImageData = imglib.encodePng(resizedImage);
     }
     outputFile.writeAsBytesSync(resizedImageData);
-    return true;
   }
 }

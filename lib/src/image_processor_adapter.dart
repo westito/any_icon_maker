@@ -18,7 +18,7 @@ class ImageProcessorAdapter {
     return this;
   }
 
-  bool save(String outPath) {
+  void save(String outPath) {
     throw UnimplementedError();
   }
 }

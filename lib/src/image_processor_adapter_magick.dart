@@ -4,7 +4,7 @@ import 'image_processor_adapter.dart';
 
 class ImageProcessorAdapterMagick extends ImageProcessorAdapter {
   @override
-  bool save(String outPath) {
+  void save(String outPath) {
     File outputFile = File(outPath);
     if (!outputFile.parent.existsSync()) {
       outputFile.parent.createSync(recursive: true);
@@ -19,6 +19,9 @@ class ImageProcessorAdapterMagick extends ImageProcessorAdapter {
       ],
       runInShell: true,
     );
-    return processResult.exitCode == 0;
+
+    if (processResult.exitCode != 0) {
+      throw Exception(processResult.stderr as String);
+    }
   }
 }

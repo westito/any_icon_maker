@@ -15,7 +15,7 @@ class ImageProcessor {
     return this;
   }
 
-  bool save(String outPath) {
-    return adapter.save(outPath);
+  void save(String outPath) {
+    adapter.save(outPath);
   }
 }

@@ -1,19 +1,20 @@
-import 'models/models.dart';
-// import 'image_processor_adapter_imglib.dart';
-import 'image_processor_adapter_magick.dart';
+import '../any_icon_maker.dart';
 import 'image_processor.dart';
+import 'models/models.dart';
+
+enum ImageProcessingMethod { imgLib, magick }
 
 class AnyIconMaker {
-  ImageProcessor imageProcessor = ImageProcessor(
-    // ImageProcessorAdapterImglib(),
-    ImageProcessorAdapterMagick(),
-  );
-
   Future<void> make(
-    String iconPath,
-    String outputPath,
-    List<ImageSet> imageSetList,
-  ) async {
+      String iconPath, String outputPath, List<ImageSet> imageSetList,
+      {ImageProcessingMethod method: ImageProcessingMethod.imgLib}) async {
+    ImageProcessorAdapter imageProcessorAdapter;
+    if (method == ImageProcessingMethod.magick) {
+      imageProcessorAdapter = ImageProcessorAdapterMagick();
+    } else {
+      imageProcessorAdapter = ImageProcessorAdapterImglib();
+    }
+
     for (ImageSet imageSet in imageSetList) {
       for (Image image in imageSet.images) {
         String imagePath = [
@@ -23,13 +24,12 @@ class AnyIconMaker {
           image.filename,
         ].join('');
 
-        bool isSaved = imageProcessor
+        ImageProcessor(imageProcessorAdapter)
             .load(iconPath)
             .resize(image.width.toInt(), image.height.toInt())
             .save(imagePath);
-        if (isSaved) {
-          print('Maked: $imagePath');
-        }
+
+        print('Success: $imagePath');
       }
     }
   }
